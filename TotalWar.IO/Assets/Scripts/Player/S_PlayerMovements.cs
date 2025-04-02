@@ -11,6 +11,7 @@ public class S_PlayerMovements : MonoBehaviour
     private S_InputReader inputReader;
     private Transform camTransform;
 
+
     private void Awake()
     {
         //-- Get All Components --//
@@ -46,5 +47,11 @@ public class S_PlayerMovements : MonoBehaviour
             Move();
         }
 
+    }
+
+    public void ResetCameraPosition()
+    {
+        //-- Camera go back to Spawn Position --//
+        camTransform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, -10);
     }
 }
