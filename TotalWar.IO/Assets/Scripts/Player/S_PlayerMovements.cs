@@ -1,25 +1,22 @@
+using Unity.Netcode;
 using UnityEngine;
 
 [RequireComponent(typeof(S_InputReader))]
-public class S_PlayerMovements : MonoBehaviour
+public class S_PlayerMovements : NetworkBehaviour
 {
     [Header("Settings")]
     [SerializeField] private bool lockCursor = true;
     [SerializeField, Range(0.1f, 10f)] private float cameraSensitivity = 5f;
+    [Header("References")]
+    [SerializeField] private Transform camTransform;
+    [SerializeField] private Transform selfTranform;
+    [SerializeField] private S_InputReader inputReader;
 
-    //-- Private Components --//
-    private S_InputReader inputReader;
-    private Transform camTransform;
-
-
-    private void Awake()
+    private void OnEnable()
     {
-        //-- Get All Components --//
-        inputReader = GetComponent<S_InputReader>();
-        camTransform = Camera.main.transform;
-    }
-    private void Start()
-    {
+        if (!IsOwner) return;
+        
+
         if (lockCursor) //-- Lock Cursor if wanted --//
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -52,6 +49,6 @@ public class S_PlayerMovements : MonoBehaviour
     public void ResetCameraPosition()
     {
         //-- Camera go back to Spawn Position --//
-        camTransform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, -10);
+        camTransform.position = new Vector3(selfTranform.position.x, selfTranform.position.y, -10);
     }
 }
