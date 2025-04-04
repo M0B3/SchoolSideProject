@@ -1,8 +1,15 @@
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class S_Spawner : MonoBehaviour
+public class S_Spawner : NetworkBehaviour
 {
+    //-- This script is used to spawn units in the game --//
+    //-- It is attached to the spawner object in the scene --//
+    //-- It uses a list of units to spawn and a spawn rate --//
+    //-- It also has a reference to the unit parent object --//
+    //-- The script is used to spawn units at a specific position --//
+
     [Header("Spawner Settings")]
     [SerializeField, Range(0.1f, 10f)] private float spawnRate = 2f;
     [Space(10)]
@@ -14,8 +21,10 @@ public class S_Spawner : MonoBehaviour
     [SerializeField] private GameObject unitGameObject;
     [SerializeField] private GameObject unitParent;
 
-    private void OnEnable()
+    public override void OnNetworkSpawn()
     {
+        if (!IsOwner) return; // -- Only Owner can spawn units --//
+
         //-- Get Unit Parent in the map hierarchy --//
         unitParent = GameObject.FindGameObjectsWithTag("UnitParent")[0];
 

@@ -12,20 +12,21 @@ public class S_PlayerMovements : NetworkBehaviour
     [SerializeField] private Transform selfTranform;
     [SerializeField] private S_InputReader inputReader;
 
-    private void OnEnable()
+    public override void OnNetworkSpawn()
     {
-        if (!IsOwner) return;
-        
-
-        if (lockCursor) //-- Lock Cursor if wanted --//
+        if (!IsOwner)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            camTransform.gameObject.SetActive(false);
+            inputReader.enabled = false;
         }
+
     }
+
 
     private void Update()
     {
+        if (!IsOwner) return; //-- Only Owner can move the camera --//
+
         CameraMovements();
     }
 
@@ -43,12 +44,5 @@ public class S_PlayerMovements : NetworkBehaviour
         {
             Move();
         }
-
-    }
-
-    public void ResetCameraPosition()
-    {
-        //-- Camera go back to Spawn Position --//
-        camTransform.position = new Vector3(selfTranform.position.x, selfTranform.position.y, -10);
     }
 }
