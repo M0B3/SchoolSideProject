@@ -1,5 +1,6 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(S_InputReader))]
 public class S_PlayerMovements : NetworkBehaviour

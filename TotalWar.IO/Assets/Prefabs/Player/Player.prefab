@@ -272,7 +272,7 @@ Transform:
   m_GameObject: {fileID: 3676737054248892808}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10000, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -483,7 +483,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkTransformExpanded: 1
   AuthorityMode: 0
-  TickSyncChildren: 0
+  TickSyncChildren: 1
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -541,17 +541,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3676737054248892808}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c5817d3b529d774fa9ef7053bd236c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  spawnRate: 2
   currentUnits: []
   spawnerTransform: {fileID: 3077379510479233565}
   unitGameObject: {fileID: 3684364312699240710, guid: ff30220ef74e7a44492ee78a2fb80951, type: 3}
-  unitParent: {fileID: 0}
 --- !u!114 &4497773147015528409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +568,8 @@ MonoBehaviour:
   canvas: {fileID: 6388030522851032731}
   resetButtonPrefab: {fileID: 691387311895005566, guid: 64b3bf51ec3540146ac3838b07f766df, type: 3}
   spawnButtonPrefab: {fileID: 3817255119150011893, guid: 494fdb803c2cc934a83ee986f688d64c, type: 3}
+  playerNameText: {fileID: 3939303029505672623}
+  playerNameInputField: {fileID: 3485510560483877584, guid: b8b92251792d11645a3a97ff580ab4b1, type: 3}
 --- !u!1 &4405293260898449336
 GameObject:
   m_ObjectHideFlags: 0
